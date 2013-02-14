@@ -23,19 +23,34 @@
       <input type="text" id="term">
     </form>
 
-    <ul id="results"></ul>
+    <ol id="results"></ol>
 
     <script>
       $(function(){
-        $('#term').keyup(function(){
-          $.get('/find.php', {"term": $(this).val()}, function(data){
-            var html = '';
-            $(data).each(function(key, tweet){
-              html += '<li>'+tweet.text+' <time>'+tweet.created+'</time></li>';
-            });
-            $('#results').html(html);
-          })
-        });
+        var termField = $('#term');
+        var resultsList = $('#results');
+
+        var state = { lastTerm: '' };
+
+        var findTweets = function(){
+
+          var term = termField.val()
+          if (term != state.lastTerm){ 
+            $.get('/find.php', {"term": term}, function(data){
+              var html = '';
+              $(data).each(function(key, tweet){
+                html += '<li>'+tweet.text+' <time>'+tweet.created+'</time></li>';
+              });
+              resultsList.html(html);
+            })
+          }
+          
+          state.lastTerm = term;
+          setTimeout(findTweets, 500);
+        };
+
+        findTweets();
+
       });
     </script>
   </body>
