@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+      time {
+        color: #CCC;
+        padding-left: 1em;
+      }
+      li {
+        margin: 1em;
+      }
+    </style>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>Tweets</h1>
+    <form>
+      <input type="text" id="term">
+    </form>
+
+    <ul id="results"></ul>
+
+    <script>
+      $(function(){
+        $('#term').keyup(function(){
+          $.get('/find.php', {"term": $(this).val()}, function(data){
+            var html = '';
+            $(data).each(function(key, tweet){
+              html += '<li>'+tweet.text+' <time>'+tweet.created+'</time></li>';
+            });
+            $('#results').html(html);
+          })
+        });
+      });
+    </script>
+  </body>
+</html>

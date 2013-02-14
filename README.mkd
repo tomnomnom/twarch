@@ -1,0 +1,10 @@
+# twarch
+
+A Twitter Archive... Thing. POC/WIP at the moment.
+
+1. Unzip tweet archive in a dir called "tweets". 
+2. Run `php create-db.php`
+3. Run `php insert.php`
+4. Use `php -S localhost:8080` or similar to spin up a web server for testing (if you're using PHP 5.4).
+
+This might not work on PHP < 5.4; but will do eventually.
