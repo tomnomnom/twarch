@@ -11,4 +11,13 @@ $db->query('
   )
 ');
 $db->query('CREATE UNIQUE INDEX id ON tweets (id)');
-$db->query('CREATE UNIQUE INDEX created ON tweets (created ASC)');
+$db->query('CREATE INDEX created ON tweets (created ASC)');
+
+$db->query('DROP TABLE stats');
+$db->query('
+  CREATE TABLE stats (
+    key TEXT,
+    value TEXT
+  )
+');
+$db->query('CREATE UNIQUE INDEX key on stats (key)');

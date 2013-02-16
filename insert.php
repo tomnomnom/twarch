@@ -1,24 +1,21 @@
 <?php
-// The following is a hacked POC
-
-date_default_timezone_set('UTC');
-ini_set('display_errors', 'on');
-error_reporting(-1);
+require __DIR__.'/Twarch/Init.php';
+$f = new \Twarch\Factory();
 
 $tweetFilePattern = __DIR__."/tweets/data/js/tweets/*.js";
 
 // Clean up before insert
-$db = new \PDO('sqlite:'.__DIR__.'/tweets.sq3');
+$db = $f->db();
 $db->query('DELETE FROM tweets');
+
+$statsStorage = $f->StatsStorage();
+$stats = $statsStorage->get();
+
 
 $i = new \GlobIterator($tweetFilePattern);
 foreach ($i as $tweetFile){
-  insertTweets($db, $tweetFile->getPathname());
-}
 
-
-/* Lib */
-function insertTweets($db, $tweetFile){
+  $tweetFile = $tweetFile->getPathname();
   $tweetFileContents = file_get_contents($tweetFile);
 
   // Remove assignment from the top of the file to make it valid JSON
@@ -37,6 +34,7 @@ function insertTweets($db, $tweetFile){
   ');
 
   foreach ($tweets as $t){
+    $stats->addToWordCount(str_word_count($t->text));
     echo "Inserting tweet [{$t->id}] [{$t->text}]\n";
     $addTweet->execute(array(
       'id'      => $t->id,
@@ -45,3 +43,5 @@ function insertTweets($db, $tweetFile){
     ));
   }
 }
+
+$statsStorage->save($stats);

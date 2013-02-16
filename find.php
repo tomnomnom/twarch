@@ -7,7 +7,7 @@ $db = new \PDO('sqlite:'.__DIR__.'/tweets.sq3');
 $searchTerm = $_GET['term'];
 
 $findTweets = $db->prepare('
-  SELECT id, created, text FROM tweets WHERE text match :searchTerm
+  SELECT id, created, text FROM tweets WHERE text match :searchTerm ORDER BY created ASC
 ');
 
 $findTweets->execute(array(
