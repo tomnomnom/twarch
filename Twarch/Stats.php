@@ -1,27 +1,24 @@
 <?php
 namespace Twarch;
 
-class Stats {
-  protected $stats = [
+class Stats extends Map {
+  protected $map = [
     'wordCount' => 0
   ];
 
-  public function __construct(Array $stats = []){
-    foreach ($this->stats as $key => $value){
-      if (!isSet($stats[$key])) continue;
-      $this->stats[$key] = $stats[$key];
+  public function __construct(Array $map = []){
+    // Only allow expected keys
+    foreach ($this->map as $key => $value){
+      if (!isSet($map[$key])) continue;
+      $this->map[$key] = $map[$key];
     }
   }
 
   public function addToWordCount($count = 1){
-    $this->stats['wordCount'] += (int) $count;
+    $this->map['wordCount'] += (int) $count;
   }
 
   public function getWordCount(){
-    return (int) $this->stats['wordCount'];
-  }
-
-  public function getAll(){
-    return $this->stats;
+    return (int) $this->map['wordCount'];
   }
 }

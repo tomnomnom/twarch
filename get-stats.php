@@ -5,5 +5,5 @@ $f = new \Twarch\Factory();
 $statsStorage = $f->StatsStorage();
 $stats = $statsStorage->get();
 
-//header('Content-Type: application/json');
+header('Content-Type: application/json');
 echo json_encode($stats->getAll());

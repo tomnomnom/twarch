@@ -12,4 +12,8 @@ class Factory {
   public function statsStorage(){
     return new StatsStorage($this->db());
   }
+
+  public function wordsStorage(){
+    return new WordsStorage($this->db());
+  }
 }

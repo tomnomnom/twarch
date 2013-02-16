@@ -9,7 +9,12 @@ $db = $f->db();
 $db->query('DELETE FROM tweets');
 
 $statsStorage = $f->StatsStorage();
+$statsStorage->truncate();
 $stats = $statsStorage->get();
+
+$wordsStorage = $f->wordsStorage();
+$wordsStorage->truncate();
+$words = $wordsStorage->get();
 
 
 $i = new \GlobIterator($tweetFilePattern);
@@ -34,7 +39,9 @@ foreach ($i as $tweetFile){
   ');
 
   foreach ($tweets as $t){
-    $stats->addToWordCount(str_word_count($t->text));
+    $wordsInTweet = str_word_count($t->text, 1);
+    $words->seenWords($wordsInTweet);
+    $stats->addToWordCount(sizeOf($wordsInTweet));
     echo "Inserting tweet [{$t->id}] [{$t->text}]\n";
     $addTweet->execute(array(
       'id'      => $t->id,
@@ -45,3 +52,4 @@ foreach ($i as $tweetFile){
 }
 
 $statsStorage->save($stats);
+$wordsStorage->save($words);
