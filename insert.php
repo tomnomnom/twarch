@@ -39,7 +39,8 @@ foreach ($i as $tweetFile){
   ');
 
   foreach ($tweets as $t){
-    $wordsInTweet = str_word_count($t->text, 1);
+    $wordsInTweet = explode(' ', $t->text);
+    $wordsInTweet = array_map('strToLower', $wordsInTweet);
     $words->seenWords($wordsInTweet);
     $stats->addToWordCount(sizeOf($wordsInTweet));
     echo "Inserting tweet [{$t->id}] [{$t->text}]\n";
