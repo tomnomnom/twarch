@@ -23,10 +23,12 @@ const EXIT_UNKNOWN_RESULT = 3;
 
 // Module defs
 $modules = array(
-  'help'     => '\\Twarch\\Module\\Help',
-  'createdb' => '\\Twarch\\Module\\CreateDB',
-  'import'   => '\\Twarch\\Module\\Import',
-  'find'     => '\\Twarch\\Module\\Find'
+  'help'        => '\\Twarch\\Module\\Help',
+  'createdb'    => '\\Twarch\\Module\\CreateDB',
+  'import'      => '\\Twarch\\Module\\Import',
+  'find'        => '\\Twarch\\Module\\Find',
+  'uniquewords' => '\\Twarch\\Module\\UniqueWords',
+  'wordcount'   => '\\Twarch\\Module\\WordCount',
 );
 
 // Meat
@@ -43,7 +45,7 @@ if (!isset($modules[$moduleName])){
 $moduleClass = $modules[$moduleName];
 $module = new $moduleClass($twarch->db(), $screen);
 
-$worked = $module->exec($args);
+$worked = $module->exec($phargs->args());
 if (!$worked){
   $screen->errln($module->getFailureReason());
   exit(EXIT_MODULE_FAILURE);

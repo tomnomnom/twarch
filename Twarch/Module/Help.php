@@ -11,7 +11,11 @@ class Help extends \Twarch\Module {
       "  help              - Display this help text",
       "  createdb          - Create an empty Tweets DB",
       "  import <tweetDir> - Import Tweets from .js files in <tweetDir>",
-      "  find <searchTerm> - Find Tweets containing <searchTerm>"
+      "  find <searchTerm> - Find Tweets containing <searchTerm>",
+      "  uniquewords       - Find unique words used",
+      "    [--min-count=N]       - Minimum word count to be returned",
+      "    [--min-word-length=N] - Minimum word length to be returned",
+      "  wordcount         - Total word count",
     );
     $helpText = implode(PHP_EOL, $helpText);
 
