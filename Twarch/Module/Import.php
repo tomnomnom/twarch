@@ -19,8 +19,10 @@ class Import extends \Twarch\Module {
     $tweetFilePattern = "{$tweetDir}/*.js";
 
     // Clean up before import
+    $this->progress("Removing old Tweets...");
     $this->db->query('DELETE FROM tweets');
 
+    $this->progress("Importing new Tweets...");
     $i = new \GlobIterator($tweetFilePattern);
     $count = 0;
     foreach ($i as $tweetFile){
@@ -44,10 +46,11 @@ class Import extends \Twarch\Module {
       ');
 
       foreach ($tweets as $t){
+        $this->progress("Importing Tweet [{$t->id}: $t->text]");
         $addTweet->execute(array(
           'id'      => $t->id,
           'created' => strToTime($t->created_at),
-          'text'    => $t->text
+          'text'    => html_entity_decode($t->text)
         ));
         $count++;
       }

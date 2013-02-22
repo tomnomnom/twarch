@@ -6,6 +6,11 @@ class Find extends \Twarch\Module {
   
     $searchTerm = $args->getResidualArg(1);
 
+    if (!$searchTerm){
+      $this->setFailureReason("Please specify a search term");
+      return false;
+    }
+
     $findTweets = $this->db->prepare('
       SELECT id, created, text FROM tweets WHERE text match :searchTerm ORDER BY created ASC
     ');
@@ -21,7 +26,7 @@ class Find extends \Twarch\Module {
       $rows[] = array(
         $tweet->id,
         date(DATE_ISO8601, $tweet->created), 
-        html_entity_decode($tweet->text)
+        $tweet->text
       );
     }
 

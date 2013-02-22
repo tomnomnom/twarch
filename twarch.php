@@ -31,6 +31,9 @@ $modules = array(
 
 // Meat
 $moduleName = strToLower($args->getResidualArg(0));
+if (!$moduleName){
+  $moduleName = 'help';
+}
 
 if (!isset($modules[$moduleName])){
   $screen->errln("Invalid mode: {$moduleName}");
@@ -38,7 +41,7 @@ if (!isset($modules[$moduleName])){
 }
 
 $moduleClass = $modules[$moduleName];
-$module = new $moduleClass($twarch->db());
+$module = new $moduleClass($twarch->db(), $screen);
 
 $worked = $module->exec($args);
 if (!$worked){
