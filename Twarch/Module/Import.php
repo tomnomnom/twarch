@@ -4,30 +4,20 @@ namespace Twarch\Module;
 class Import extends \Twarch\Module {
   public function exec($args){
 
-    $tweetDir = $args->getResidualArg(1);
+    $tweetFiles = $args->getResidualArgs(1);
 
-    if (!$tweetDir){
-      $this->setFailureReason("Please specify a directorty containing .js Tweet files"); 
+    if (sizeOf($tweetFiles) == 0){
+      $this->setFailureReason("Please specify at least one .js file containing Tweets"); 
       return false;
     }
-
-    if (!is_dir($tweetDir)){
-      $this->setFailureReason("Directory [{$tweetDir}] does not exist");
-      return false;
-    }
-
-    $tweetFilePattern = "{$tweetDir}/*.js";
 
     // Clean up before import
     $this->progress("Removing old Tweets...");
     $this->db->query('DELETE FROM tweets');
 
-    $this->progress("Importing new Tweets...");
-    $i = new \GlobIterator($tweetFilePattern);
     $count = 0;
-    foreach ($i as $tweetFile){
+    foreach ($tweetFiles as $tweetFile){
 
-      $tweetFile = $tweetFile->getPathname();
       $tweetFileContents = file_get_contents($tweetFile);
 
       // Remove assignment from the top of the file to make it valid JSON
@@ -35,10 +25,11 @@ class Import extends \Twarch\Module {
 
       $tweets = json_decode($tweetFileContents);
 
+      $this->progress("Importing Tweets from [{$tweetFile}]");
+
       $error = json_last_error();
       if (json_last_error() != JSON_ERROR_NONE || !is_array($tweets)){
-        $this->setFailureReason("Failed to parse JSON from [{$tweetFile}]");
-        return false;
+        $this->progress("Failed to parse JSON from [{$tweetFile}]; skipping");
       }
 
       $addTweet = $this->db->prepare('
@@ -46,7 +37,6 @@ class Import extends \Twarch\Module {
       ');
 
       foreach ($tweets as $t){
-        $this->progress("Importing Tweet [{$t->id}: $t->text]");
         $addTweet->execute(array(
           'id'      => $t->id,
           'created' => strToTime($t->created_at),
