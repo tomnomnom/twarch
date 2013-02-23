@@ -40,7 +40,7 @@ class Import extends \Twarch\Module {
         $addTweet->execute(array(
           'id'      => $t->id,
           'created' => strToTime($t->created_at),
-          'text'    => html_entity_decode($t->text)
+          'text'    => str_replace("\n", "", html_entity_decode($t->text))
         ));
         $count++;
       }

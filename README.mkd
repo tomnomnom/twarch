@@ -14,7 +14,11 @@ Import your Twitter Archive into a SQLite database and then do stuff with it.
 3. Run `composer install` to get the dependencies 
 
 ## Importing your Twitter Archive
-1. Unzip your Twitter Arhive somewhere. In this example, mine is extracted into a directory called 'tweets'.
+1. Unzip your Twitter Arhive somewhere. In this example, mine is extracted into a directory called 'tweets':
+    ```
+    ▶ unzip tweets.zip -d tweets
+    ```
+
 2. Create an empty DB using the `createdb` mode:
     ```
     ▶ php twarch.php createdb
@@ -64,8 +68,16 @@ You can get a total word and character count:
     Words: 209076
     Characters: 1233918
 
+## Updating your data
+
+You can update your data via HTTP with the `sync` mode:
+
+    ▶ php twarch.php sync tomnomnom
+    Last Tweet had ID [305359084289396736]
+    Importing Tweet with ID [305379759108530177]
+    Imported 1 Tweets
+
 ## Coming soon
-* A mode to fetch new Tweets and update the DB over HTTP
 * A tarball to download that includes dependencies and an empty DB
 * Possibly a [Phar](http://www.php.net/manual/en/book.phar.php) version
 * Other, interesting, modes to do more stuff with your data

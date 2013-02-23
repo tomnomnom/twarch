@@ -16,6 +16,7 @@ class Help extends \Twarch\Module {
       "    [--min-count=N]       - Minimum word count to be returned",
       "    [--min-word-length=N] - Minimum word length to be returned",
       "  wordcount             - Total word count",
+      "  sync <username>       - Fetch new Tweets via HTTP",
     );
     $helpText = implode(PHP_EOL, $helpText);
 

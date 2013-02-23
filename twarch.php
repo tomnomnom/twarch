@@ -20,6 +20,7 @@ const EXIT_SUCCESS        = 0;
 const EXIT_INVALID_MODE   = 1;
 const EXIT_MODULE_FAILURE = 2;
 const EXIT_UNKNOWN_RESULT = 3;
+const EXIT_DB_ERROR       = 4;
 
 // Module defs
 $modules = array(
@@ -29,6 +30,7 @@ $modules = array(
   'find'        => '\\Twarch\\Module\\Find',
   'uniquewords' => '\\Twarch\\Module\\UniqueWords',
   'wordcount'   => '\\Twarch\\Module\\WordCount',
+  'sync'        => '\\Twarch\\Module\\Sync',
 );
 
 // Meat
@@ -42,33 +44,40 @@ if (!isset($modules[$moduleName])){
   exit(EXIT_INVALID_MODE);
 }
 
-$moduleClass = $modules[$moduleName];
-$module = new $moduleClass($twarch->db(), $screen);
+try {
+  $moduleClass = $modules[$moduleName];
+  $module = new $moduleClass($twarch->db(), $screen);
 
-$worked = $module->exec($phargs->args());
-if (!$worked){
-  $screen->errln($module->getFailureReason());
-  exit(EXIT_MODULE_FAILURE);
-}
+  $worked = $module->exec($phargs->args());
+  if (!$worked){
+    $screen->errln($module->getFailureReason());
+    exit(EXIT_MODULE_FAILURE);
+  }
 
-$result = $module->getResult();
+  $result = $module->getResult();
 
-switch (get_class($result)){
-  case 'Twarch\\Result\\Text':
-    $screen->outln($result->get());
-    break;
+  switch (get_class($result)){
+    case 'Twarch\\Result\\Text':
+      $screen->outln($result->get());
+      break;
 
-  case 'Twarch\\Result\\Table':
-    $table = $phargs->table();
-    $table->setFields($result->getFields());
-    $table->addRows($result->getRows());
-    $screen->out($table);
-    break;
+    case 'Twarch\\Result\\Table':
+      $table = $phargs->table();
+      $table->setFields($result->getFields());
+      $table->addRows($result->getRows());
+      $screen->out($table);
+      break;
 
-  default:
-    $screen->errln("Unknown result type"); 
-    exit(EXIT_UNKNOWN_RESULT);
-    break;
+    default:
+      $screen->errln("Unknown result type"); 
+      exit(EXIT_UNKNOWN_RESULT);
+      break;
+  }
+} catch(\PDOException $e){
+  $screen->errln(
+    "A database error occured: Code ".$e->getCode()." - ".$e->getMessage()
+  ); 
+  exit(EXIT_DB_ERROR);
 }
 
 exit(EXIT_SUCCESS);

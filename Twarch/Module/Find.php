@@ -26,7 +26,7 @@ class Find extends \Twarch\Module {
       $rows[] = array(
         $tweet->id,
         date(DATE_ISO8601, $tweet->created), 
-        $tweet->text
+        str_replace("\n", " ", $tweet->text)
       );
     }
 
