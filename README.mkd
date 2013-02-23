@@ -9,6 +9,15 @@ Import your Twitter Archive into a SQLite database and then do stuff with it.
 * [Composer](http://getcomposer.org/)
 
 ## Installation
+Either:
+1. Download the [tarball](http://tomnomnom.com/twarch/twarch-0.0.1.tgz)
+2. Extract it:
+    ```
+    ▶ tar xzf twarch.tgz
+    ```
+3. `cd` into the newly created directory
+
+Or:
 1. Clone the repo with `git clone git://github.com/TomNomNom/twarch.git`
 2. `cd` into the newly created directory
 3. Run `composer install` to get the dependencies 
@@ -78,6 +87,5 @@ You can update your data via HTTP with the `sync` mode:
     Imported 1 Tweets
 
 ## Coming soon
-* A tarball to download that includes dependencies and an empty DB
 * Possibly a [Phar](http://www.php.net/manual/en/book.phar.php) version
 * Other, interesting, modes to do more stuff with your data
