@@ -64,5 +64,8 @@ You can get a total word and character count:
     Words: 209076
     Characters: 1233918
 
-
-
+## Coming soon
+* A mode to fetch new Tweets and update the DB over HTTP
+* A tarball to download that includes dependencies and an empty DB
+* Possibly a [Phar](http://www.php.net/manual/en/book.phar.php) version
+* Other, interesting, modes to do more stuff with your data
