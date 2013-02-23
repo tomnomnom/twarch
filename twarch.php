@@ -13,6 +13,9 @@ $phargs = new \Phargs\Factory();
 $screen = $phargs->screen();
 $args = $phargs->args();
 
+// Global args
+$args->expectFlag('--output-tsv');
+
 $twarch = new \Twarch\Factory();
 
 // Exit codes
@@ -63,7 +66,11 @@ try {
       break;
 
     case 'Twarch\\Result\\Table':
-      $table = $phargs->table();
+      if ($args->flagIsSet('--output-tsv')){
+        $table = $phargs->tsv();
+      } else {
+        $table = $phargs->table();
+      }
       $table->setFields($result->getFields());
       $table->addRows($result->getRows());
       $screen->out($table);
