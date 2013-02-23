@@ -1,5 +1,68 @@
 # twarch
 
-A Twitter Archive... Thing. POC/WIP at the moment.
+Import your Twitter Archive into a SQLite database and then do stuff with it.
 
-This might not work on PHP < 5.4; but will do eventually.
+## Requirements
+* PHP 5.3 or newer
+* SQLite PHP Extension
+* Linux of some description
+* [Composer](http://getcomposer.org/)
+
+## Installation
+1. Clone the repo with `git clone git://github.com/TomNomNom/twarch.git`
+2. `cd` into the newly created directory
+3. Run `composer install` to get the dependencies 
+
+## Importing your Twitter Archive
+1. Unzip your Twitter Arhive somewhere. In this example, mine is extracted into a directory called 'tweets'.
+2. Create an empty DB using the `createdb` mode:
+    ```
+    ▶ php twarch.php createdb
+    Successfully created DB
+    ```
+    
+3. Import your Tweets from the JS files in the archive by using the `import` mode:
+    ```
+    ▶ php twarch.php import tweets/data/js/tweets/*.js
+    Removing old Tweets...
+    Importing Tweets from [tweets/data/js/tweets/2008_11.js]
+    Importing Tweets from [tweets/data/js/tweets/2008_12.js]
+    ...
+    Importing Tweets from [tweets/data/js/tweets/2013_01.js]
+    Importing Tweets from [tweets/data/js/tweets/2013_02.js]
+    Imported 15027 Tweets
+    ```
+
+4. Do stuff with your data! 
+
+## Stuff to do with your data
+
+You can search for something:
+
+    ▶ php twarch.php find "Java is weird"
+    +------------+--------------------------+------------------------------------------------------------+
+    | Id         | Created                  | Text                                                       |
+    +------------+--------------------------+------------------------------------------------------------+
+    | 1023688023 | 2008-11-26T00:42:07+0000 | Done the 'hello, world' thing on the G1 now. Java is weird |
+    +------------+--------------------------+------------------------------------------------------------+
+
+You can get a list of words and how often you used them:
+
+    ▶ php twarch.php uniquewords --min-count=500 --min-word-length=6
+    +-------------+-------+
+    | Word        | Count |
+    +-------------+-------+
+    | @lingmops   | 1471  |
+    | @ghalfacree | 862   |
+    | @scawp      | 817   |
+    | @johnmclear | 621   |
+    +-------------+-------+
+
+You can get a total word and character count:
+
+    ▶ php twarch.php wordcount
+    Words: 209076
+    Characters: 1233918
+
+
+
