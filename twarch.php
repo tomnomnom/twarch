@@ -31,6 +31,7 @@ $modules = array(
   'uniquewords' => '\\Twarch\\Module\\UniqueWords',
   'wordcount'   => '\\Twarch\\Module\\WordCount',
   'sync'        => '\\Twarch\\Module\\Sync',
+  'mentions'    => '\\Twarch\\Module\\Mentions',
 );
 
 // Meat

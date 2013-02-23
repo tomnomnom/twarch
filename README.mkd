@@ -58,7 +58,7 @@ You can search for something:
     | 1023688023 | 2008-11-26T00:42:07+0000 | Done the 'hello, world' thing on the G1 now. Java is weird |
     +------------+--------------------------+------------------------------------------------------------+
 
-You can get a list of words and how often you used them:
+Get a list of words and how often you used them:
 
     ▶ php twarch.php uniquewords --min-count=500 --min-word-length=6
     +-------------+-------+
@@ -70,11 +70,23 @@ You can get a list of words and how often you used them:
     | @johnmclear | 621   |
     +-------------+-------+
 
-You can get a total word and character count:
+Get a total word and character count:
 
     ▶ php twarch.php wordcount
     Words: 209076
     Characters: 1233918
+
+Get a list of who you've mentioned and how often:
+
+    ▶ php twarch.php mentions
+    +--------------------------+-------+
+    | Handle                   | Count |
+    +--------------------------+-------+
+    | @lingmops                | 1490  |
+    | @ghalfacree              | 871   |
+    | @scawp                   | 822   |
+    | @johnmclear              | 624   |
+    +--------------------------+-------+
 
 ## Updating your data
 
