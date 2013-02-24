@@ -37,6 +37,7 @@ $modules = array(
   'mentions'    => '\\Twarch\\Module\\Mentions',
   'timeofday'   => '\\Twarch\\Module\\TimeOfDay',
   'dayofweek'   => '\\Twarch\\Module\\DayOfWeek',
+  'dayofmonth'  => '\\Twarch\\Module\\DayOfMonth',
 );
 
 // Meat

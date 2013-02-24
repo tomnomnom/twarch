@@ -20,6 +20,7 @@ class Help extends \Twarch\Module {
       "  mentions              - Who you've mentioned and how many times",
       "  timeofday             - What time of day you Tweet most often",
       "  dayofweek             - Which day of the week you Tweet most often",
+      "  dayofmonth            - Which day of the month you Tweet most often",
       "",
       "Global options:",
       "  --output-tsv - Output TSV instead of ASCII tables",
