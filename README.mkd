@@ -139,6 +139,19 @@ Or even which month of the year:
     | Dec   | 1232  |
     +-------+-------+
 
+You can see how much you've Tweeted over time (with `year`, `month` or `day` resolution):
+
+    ▶ php twarch.php trend --resolution=year
+    +------+-------+
+    | Year | Count |
+    +------+-------+
+    | 2008 | 42    |
+    | 2009 | 1510  |
+    ...
+    | 2012 | 5617  |
+    | 2013 | 864   |
+    +------+-------+
+
 ## Updating your data
 
 You can update your data via HTTP with the `sync` mode:

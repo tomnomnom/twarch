@@ -39,6 +39,7 @@ $modules = array(
   'dayofweek'   => '\\Twarch\\Module\\DayOfWeek',
   'dayofmonth'  => '\\Twarch\\Module\\DayOfMonth',
   'monthofyear' => '\\Twarch\\Module\\MonthOfYear',
+  'trend'       => '\\Twarch\\Module\\Trend',
 );
 
 // Meat
