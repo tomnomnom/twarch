@@ -29,7 +29,7 @@ class MonthOfYear extends \Twarch\Module {
       $days[$day]++;
     }
 
-    $fields = array('Day', 'Count');
+    $fields = array('Month', 'Count');
 
     $rows = array();
     foreach ($days as $day => $count){

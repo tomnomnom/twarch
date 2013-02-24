@@ -129,15 +129,15 @@ Or which day of the month:
 Or even which month of the year:
 
     ▶ php twarch.php monthofyear
-    +-----+-------+
-    | Day | Count |
-    +-----+-------+
-    | Jan | 1586  |
-    | Feb | 1598  |
+    +-------+-------+
+    | Month | Count |
+    +-------+-------+
+    | Jan   | 1586  |
+    | Feb   | 1598  |
     ...
-    | Nov | 1267  |
-    | Dec | 1232  |
-    +-----+-------+
+    | Nov   | 1267  |
+    | Dec   | 1232  |
+    +-------+-------+
 
 ## Updating your data
 
