@@ -101,6 +101,16 @@ Find out what time of day you Tweet the most:
     | 23   | 317   |
     +------+-------+
 
+Find out which day of the week you Tweet the most:
+
+    ▶ php twarch.php dayofweek
+    +-----+-------+
+    | Day | Count |
+    +-----+-------+
+    | Mon | 2316  |
+    ...
+    | Sun | 1333  |
+    +-----+-------+
 
 ## Updating your data
 

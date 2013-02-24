@@ -36,6 +36,7 @@ $modules = array(
   'sync'        => '\\Twarch\\Module\\Sync',
   'mentions'    => '\\Twarch\\Module\\Mentions',
   'timeofday'   => '\\Twarch\\Module\\TimeOfDay',
+  'dayofweek'   => '\\Twarch\\Module\\DayOfWeek',
 );
 
 // Meat
