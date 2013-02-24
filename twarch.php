@@ -38,6 +38,7 @@ $modules = array(
   'timeofday'   => '\\Twarch\\Module\\TimeOfDay',
   'dayofweek'   => '\\Twarch\\Module\\DayOfWeek',
   'dayofmonth'  => '\\Twarch\\Module\\DayOfMonth',
+  'monthofyear' => '\\Twarch\\Module\\MonthOfYear',
 );
 
 // Meat
