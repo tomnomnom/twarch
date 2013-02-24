@@ -11,8 +11,8 @@ Import your Twitter Archive into a SQLite database and then do stuff with it.
 ## Installation
 Either:
 
-1. Download the [tarball](http://tomnomnom.com/twarch/twarch-0.0.1.tgz)
-2. Extract it with `tar xzf twarch-0.0.1.tgz`
+1. Download the [tarball](http://tomnomnom.com/twarch/twarch-0.0.2.tgz)
+2. Extract it with `tar xzf twarch-0.0.2.tgz`
 3. `cd` into the newly created directory
 
 Or:
