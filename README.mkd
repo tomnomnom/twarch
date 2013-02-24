@@ -88,6 +88,20 @@ Get a list of who you've mentioned and how often:
     | @johnmclear              | 624   |
     +--------------------------+-------+
 
+Find out what time of day you Tweet the most:
+
+    ▶ php twarch.php timeofday
+    +------+-------+
+    | Hour | Count |
+    +------+-------+
+    | 00   | 218   |
+    | 01   | 80    |
+    ...
+    | 22   | 552   |
+    | 23   | 317   |
+    +------+-------+
+
+
 ## Updating your data
 
 You can update your data via HTTP with the `sync` mode:

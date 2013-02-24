@@ -35,6 +35,7 @@ $modules = array(
   'wordcount'   => '\\Twarch\\Module\\WordCount',
   'sync'        => '\\Twarch\\Module\\Sync',
   'mentions'    => '\\Twarch\\Module\\Mentions',
+  'timeofday'   => '\\Twarch\\Module\\TimeOfDay',
 );
 
 // Meat

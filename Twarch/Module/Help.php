@@ -18,6 +18,7 @@ class Help extends \Twarch\Module {
       "  wordcount             - Total word count",
       "  sync <username>       - Fetch new Tweets via HTTP",
       "  mentions              - Who you've mentioned and how many times",
+      "  timeofday             - What time of day you Tweet most often",
       "",
       "Global options:",
       "  --output-tsv - Output TSV instead of ASCII tables",
