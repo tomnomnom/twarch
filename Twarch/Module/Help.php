@@ -23,7 +23,7 @@ class Help extends \Twarch\Module {
       "  dayofmonth            - Which day of the month you Tweet most often",
       "  monthofyear           - Which month of the year you Tweet most often",
       "  trend                 - How much you've Tweeted over time",
-      "    [--resolution=day|month|year] - Resolution for the trend data"
+      "    [--resolution=day|month|year] - Resolution for the trend data",
       "",
       "Global options:",
       "  --output-tsv - Output TSV instead of ASCII tables",
