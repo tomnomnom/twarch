@@ -15,7 +15,7 @@ class Help extends \Twarch\Module {
       "  uniquewords           - Find unique words used",
       "    [--min-count=N]       - Minimum word count to be returned",
       "    [--min-word-length=N] - Minimum word length to be returned",
-      "  wordcount             - Total word count",
+      "  stats                 - General stats (total word count etc)",
       "  sync <username>       - Fetch new Tweets via HTTP",
       "  mentions              - Who you've mentioned and how many times",
       "  timeofday             - What time of day you Tweet most often",

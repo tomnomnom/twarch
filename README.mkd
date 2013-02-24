@@ -70,11 +70,14 @@ Get a list of words and how often you used them:
     | @johnmclear | 621   |
     +-------------+-------+
 
-Get a total word and character count:
+Get a total word count and other stats about your Tweets:
 
-    ▶ php twarch.php wordcount
-    Words: 209076
-    Characters: 1233918
+    ▶ php twarch.php stats
+    Tweets: 15211
+    Total words: 211827
+    Words per Tweet: 14
+    Total characters: 1250269
+    Characters per Tweet: 82
 
 Get a list of who you've mentioned and how often:
 
