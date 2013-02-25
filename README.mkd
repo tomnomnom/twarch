@@ -104,6 +104,18 @@ Get a list of who you've mentioned and how often:
     | @johnmclear              | 624   |
     +--------------------------+-------+
 
+See which hashtags you've used and how often:
+
+    ▶ php twarch.php hashtags
+    +-------------------------------------------------------------------------+-------+
+    | Hashtag                                                                 | Count |
+    +-------------------------------------------------------------------------+-------+
+    | #songsincode                                                            | 17    |
+    ...
+    | #joke                                                                   | 1     |
+    +-------------------------------------------------------------------------+-------+
+
+
 Find out what time of day you Tweet the most:
 
     ▶ php twarch.php timeofday

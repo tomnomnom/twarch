@@ -36,6 +36,7 @@ $modules = array(
   'stats'       => '\\Twarch\\Module\\Stats',
   'sync'        => '\\Twarch\\Module\\Sync',
   'mentions'    => '\\Twarch\\Module\\Mentions',
+  'hashtags'    => '\\Twarch\\Module\\Hashtags',
   'timeofday'   => '\\Twarch\\Module\\TimeOfDay',
   'dayofweek'   => '\\Twarch\\Module\\DayOfWeek',
   'dayofmonth'  => '\\Twarch\\Module\\DayOfMonth',

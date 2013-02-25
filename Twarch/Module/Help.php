@@ -20,6 +20,7 @@ class Help extends \Twarch\Module {
       "  stats                 - General stats (total word count etc)",
       "  sync <username>       - Fetch new Tweets via HTTP",
       "  mentions              - Who you've mentioned and how many times",
+      "  hashtags              - Which hashtags you've used and how often",
       "  timeofday             - What time of day you Tweet most often",
       "  dayofweek             - Which day of the week you Tweet most often",
       "  dayofmonth            - Which day of the month you Tweet most often",
