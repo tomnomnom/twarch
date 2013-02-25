@@ -21,13 +21,15 @@ class Stats extends \Twarch\Module {
     }
     $wordsPerTweet = round($wordCount / $tweetCount);
     $charsPerTweet = round($charCount / $tweetCount);
+    $tweetEfficiency = round(100 / 140 * $charsPerTweet, 2);
 
     $this->setResult(new \Twarch\Result\Text(
         "Tweets: {$tweetCount}".PHP_EOL.
         "Total words: {$wordCount}".PHP_EOL.
         "Words per Tweet: {$wordsPerTweet}".PHP_EOL.
         "Total characters: {$charCount}".PHP_EOL.
-        "Characters per Tweet: {$charsPerTweet}".PHP_EOL
+        "Characters per Tweet: {$charsPerTweet}".PHP_EOL.
+        "Tweet Efficiency: {$tweetEfficiency}%".PHP_EOL
     ));
 
     return true;
