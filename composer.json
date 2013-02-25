@@ -1,5 +1,5 @@
 {
     "require": {
-        "tomnomnom/phargs": "0.0.4"
+        "tomnomnom/phargs": "0.0.5"
     }
 }

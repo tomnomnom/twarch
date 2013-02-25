@@ -31,6 +31,7 @@ $modules = array(
   'createdb'    => '\\Twarch\\Module\\CreateDB',
   'import'      => '\\Twarch\\Module\\Import',
   'find'        => '\\Twarch\\Module\\Find',
+  'all'         => '\\Twarch\\Module\\All',
   'uniquewords' => '\\Twarch\\Module\\UniqueWords',
   'stats'       => '\\Twarch\\Module\\Stats',
   'sync'        => '\\Twarch\\Module\\Sync',
@@ -79,6 +80,7 @@ try {
       $table->setFields($result->getFields());
       $table->addRows($result->getRows());
       $screen->out($table);
+
       break;
 
     default:

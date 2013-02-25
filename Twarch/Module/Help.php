@@ -12,6 +12,7 @@ class Help extends \Twarch\Module {
       "  createdb              - Create an empty Tweets DB",
       "  import <tweetFile[s]> - Import Tweets from .js files in <tweetFile[s]>",
       "  find <searchTerm>     - Find Tweets containing <searchTerm>",
+      "  all                   - List all Tweets",
       "  uniquewords           - Find unique words used",
       "    [--min-count=N]       - Minimum word count to be returned",
       "    [--min-word-length=N] - Minimum word length to be returned",
