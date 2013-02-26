@@ -13,7 +13,8 @@ class Sync extends \Twarch\Module {
 
     $params = array(
       "screen_name" => $username,
-      "include_rts" => "true"
+      "include_rts" => "true",
+      "count"       => 200
     );
     
     // Get the ID of the last tweet
