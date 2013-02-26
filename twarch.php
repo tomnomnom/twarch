@@ -31,15 +31,18 @@ $modules = array(
   'createdb'    => '\\Twarch\\Module\\CreateDB',
   'import'      => '\\Twarch\\Module\\Import',
   'find'        => '\\Twarch\\Module\\Find',
+  'all'         => '\\Twarch\\Module\\All',
   'uniquewords' => '\\Twarch\\Module\\UniqueWords',
   'stats'       => '\\Twarch\\Module\\Stats',
   'sync'        => '\\Twarch\\Module\\Sync',
   'mentions'    => '\\Twarch\\Module\\Mentions',
+  'hashtags'    => '\\Twarch\\Module\\Hashtags',
   'timeofday'   => '\\Twarch\\Module\\TimeOfDay',
   'dayofweek'   => '\\Twarch\\Module\\DayOfWeek',
   'dayofmonth'  => '\\Twarch\\Module\\DayOfMonth',
   'monthofyear' => '\\Twarch\\Module\\MonthOfYear',
   'trend'       => '\\Twarch\\Module\\Trend',
+  'dump'        => '\\Twarch\\Module\\Dump',
 );
 
 // Meat
@@ -79,6 +82,7 @@ try {
       $table->setFields($result->getFields());
       $table->addRows($result->getRows());
       $screen->out($table);
+
       break;
 
     default:
