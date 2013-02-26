@@ -28,7 +28,7 @@ class Sync extends \Twarch\Module {
     
     // Request tweets since the last one
     $q = http_build_query($params);
-    $url = "http://api.twitter.com/1/statuses/user_timeline.json?{$q}";
+    $url = "http://api.twitter.com/1/statuses/user_timeline.json?{$q}&count=200";
     $response = file_get_contents($url);
 
     if (!$response){
